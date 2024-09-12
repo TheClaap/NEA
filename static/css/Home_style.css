@@ -1,0 +1,113 @@
+html,body{
+    height:100%
+}
+.wrapping{
+    height:100%;
+    width:100%;
+    margin: auto;
+    overflow:auto;
+}
+.center{
+    margin: auto;
+    width: 50%;
+    overflow: hidden;
+}
+#header{
+    margin: auto;
+    height: 130px;
+    display:block;
+}
+.logo{
+    width: 150px;
+    display: inline-block;
+    margin-left: 40%;
+}
+#logout{
+    display: block;
+    float: right;
+    margin-top: 30px;
+    width: 100px;
+}
+.row{
+    width:100%;
+    margin: auto;
+}
+#mainOpt{
+    height: 450px;
+    border-style: double;
+    border-width: 5px;
+    display:block;
+}
+.items{
+    display: inline-block;
+    width:250px;
+    height:auto;
+    padding:30px;
+    margin-top:25px;
+}
+.butt{
+    width:246px;
+    height:150px;
+    background-color: grey;
+    border-style:solid;
+    border-width:2px;
+}
+#bookLes{
+    float:left;
+}
+#buyHour{
+    padding-left:35px;
+}
+#bookedLes{
+    float:right;
+}
+.purchbutton{
+    display: block;
+    border-width:2px;
+    float: right;
+    box-sizing:border-box;
+    width: 20%;
+    height: 100%;
+}
+.purchtxt{
+    font-size: x-large;
+    margin:0px;
+}
+.ptxt{
+    display: inline-block;
+    width:80%;
+    height:100%;
+}
+.pbutton{
+    width:100%;
+    height: 100%;
+    background-color:red;
+}
+.purchaseOp{
+    box-sizing: border-box;
+    height: 120px;
+    border-style:double;
+    border-width:2px;
+    display:block;
+    padding:20px;
+    
+}
+.case{
+    margin: 50px;
+}
+.buttmid{
+    width:40%;
+    height:30%;
+    margin-left:27%;
+    border-style:solid;
+    border-width:2px;
+}
+.txtmid{
+    padding-left:12%;
+    margin-top:12%;
+}
+.txtbox{
+    height:40%;
+    width:100%;
+    box-sizing:border-box;
+}

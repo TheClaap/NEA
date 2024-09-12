@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Hours</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" type="text/javascript"></script>
+        <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/Home_style.css') }}">
+        <script type="text/javascript" src = "static/scripts/GetCookie.js"></script>
+        <script type="text/javascript" src= "static/scripts/PurchHours.js"></script>
+    </head>
+    <body onload="getCookieHome('Id')">
+        <div class="wrapping">
+            <div id="header" class="center">
+                <div class="row">
+                    <div class="logo">
+                        <img src="static/images/Logo.png">
+                    </div>
+                    <div id="logout">
+                        <a  href="/Register" onclick="RemCookie()">Log Out</a><br>
+                        <a href="/Home">Home</a>
+                    </div>
+                </div>
+            </div>
+            <div id="mainPurchase" class="center">
+                <div class="case">
+                    <div id="2hours" class="purchaseOp">
+                        <div class="ptxt">
+                            
+                            <p class="purchtxt">2 Hour Package</p>
+                            <div>
+                                <p>£30 per hour</p>
+                            </div>
+                        </div>
+                        <div class="purchbutton">
+                            <button class="pbutton" onclick="addHrs(2)">Buy Hours</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="case">
+                    <div id="4hours" class="purchaseOp">
+                        <div class="ptxt">
+                            <p class="purchtxt">4 Hour Package</p>
+                            <div>
+                                <p>£30 per hour</p>
+                            </div>
+                        </div>
+                        <div class="purchbutton">
+                            <button class="pbutton" onclick="addHrs(4)">Buy Hours</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="case">
+                    <div id="6hours" class="purchaseOp">
+                    <div class="ptxt">
+                        
+                        <p class="purchtxt">6 Hour Package</p>
+                        <div>
+                            <p>£30 per hour</p>
+                        </div>
+                    </div>
+                    <div class="purchbutton">
+                        <button class="pbutton" onclick="addHrs(6)">Buy Hours</button>
+                    </div>
+                    </div>
+                </div>
+                <div class="case">
+                    <div id="8hours" class="purchaseOp">
+                    <div class="ptxt">
+                        
+                        <p class="purchtxt">8 Hour Package</p>
+                        <div>
+                            <p>£30 per hour</p>
+                        </div>
+                    </div>
+                    <div class="purchbutton">
+                        <button class="pbutton" onclick="addHrs(8)">Buy Hours</button>
+                    </div>
+                    </div>
+                </div>
+                <div class="case">
+                    <div id="10hours" class="purchaseOp">
+                        <div class="ptxt">
+                            
+                            <p class="purchtxt">10 Hour Package</p>
+                            <div>
+                                <p>£30 per hour. 1 Hour free!</p>
+                            </div>
+                        </div>
+                        <div class="purchbutton">
+                            <button class="pbutton" onclick="addHrs(10)">Buy Hours £270</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </body>
+</html>

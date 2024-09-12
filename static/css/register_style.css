@@ -1,0 +1,29 @@
+html, body{
+    height : 100%;
+}
+html {
+    display : table;
+    margin : auto;
+}
+body {
+    display : table-cell;
+    vertical-align : middle;
+}
+#second {
+    float:right;
+}
+#email {
+    float:right;
+}
+
+h3 {
+    display: inline-block;
+}
+input {
+    display: inline-block;
+}
+form{
+    padding:10px;
+    border:2px;
+    border-style:solid;
+}

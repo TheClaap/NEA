@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> login </title>
+    <script type="text/javascript" src = "static/scripts/GetCookie.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/Login_style.css') }}">
+</head>
+<body onload="getCookieLog()">
+    <form method="POST" action="/Login">
+        <h2>Login</h2><br>
+        <h3>Email: </h3>
+        <input type="email" name="Em" placeholder="Email" width="17"><br>
+        <h3>Password: </h3>
+        <input type="password" name="Pass" placeholder="Password" width="17"><br>
+        <button type="submit">Login</button><br>
+        <a href="/Register">Register</a>
+    </form>
+</body>
+
+</html> 

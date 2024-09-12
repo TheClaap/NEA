@@ -1,0 +1,22 @@
+html, body{
+    height:100%;
+}
+html {
+    display:table;
+    margin:auto;
+}
+body {
+    display:table-cell;
+    vertical-align:middle;
+}
+form {
+    padding:10px;
+    border:2px;
+    border-style:solid;
+}
+h3 {
+    display:inline-block;
+}
+input {
+    display:inline-block;
+}

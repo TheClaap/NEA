@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html?>
+    <head>
+        <title>Register</title>
+        <script type="text/javascript" src = "static/scripts/GetCookie.js"></script>
+        <script type="text/javascript" src = "static/scripts/MakeCookie.js"></script>
+        <link rel="stylesheet" type="text/css" href="{{url_for ('static', filename='css/register_style.css') }}">
+    </head>
+    <body onload="getCookieLog()">
+        <form action="/Register" method="POST">
+            <h2>Register</h2>
+            <h3>Email: </h3>
+            <input name="Email" type="email" placeholder="Enter Email" width="17"><br>
+            <h3>Password: </h3>
+            <input name="P1" type="password" placeholder="Enter password" width="17"><br>
+            <input name="P2" type="password" placeholder="Re-enter Password" width="17" id="second"><br>
+            <h3>Students first name: </h3><br>
+            <input name="Name" type="text" placeholder="First Name" width="17"><br>
+            <input id="B1" type="submit" value="Register">
+            <br>
+            <a href="/Login">Login Here</a>
+        </form>
+    </body>
+</html>

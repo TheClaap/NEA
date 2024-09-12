@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Home</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js" type="text/javascript"></script>
+        <script type="text/javascript" src = "static/scripts/RemoveCookie.js"></script>
+        <script type="text/javascript" src = "static/scripts/GetCookie.js"></script>
+        <script type="text/javascript" src = "static/scripts/ReturnId.js"></script>
+        <link rel="stylesheet" type="text/css" href = "{{url_for('static', filename='css/Home_style.css') }}">
+    </head>
+    <body onload="getCookieHome('Id')">
+        <div class="wrapping">
+            <div id="header" class="center">
+                <div class="row">
+                    <div class="logo">
+                        <img src="static/images/Logo.png">
+                    </div>
+                    <div id="logout">
+                        <a  href="/Register" onclick="RemCookie()">Log Out</a>
+                    </div>
+                </div>
+            </div>
+            <div id="mainOpt" class="center">
+                <div id="bookLes" class="items">
+                    <img src="static/images/driving.png">
+                    <div class="butt">
+`                       <a href="/BuyHours">purch</a>
+                    </div>
+                </div>
+                <div id="buyHour" class="items">
+                    <img src="static/images/merc.png">
+                    <div class="butt">
+                        <div class="txtbox">
+                            <p class="txtmid">Purchase hours here.</p>
+                        </div>
+                        <button class="buttmid" onclick="window.location.assign('/BuyHours')">Purchase some hours</button>
+                    </div>
+                </div>
+                <div id="bookedLes" class="items">
+                    <img src="static/images/surround.png">
+                    <div class="butt">
+                        <p>dog</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
