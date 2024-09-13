@@ -15,26 +15,29 @@ def index():
 def REG():
     global id
     if request.method=="GET":
-        return render_template("Reg.html")
+        num = 1
+        return render_template("Reg.html", type=num)
     else:
         Email = request.form.get("Email")
         Pass1 = request.form.get("P1")
         Pass2 = request.form.get("P2")
         First = request.form.get("Name")
         if Pass1!=Pass2:
-            return redirect("/Register/retry")
+            num=2
+            return render_template("Reg.html", type=num)
         else:
             if Validate.Val(Email,Pass1) == True:
                 account = Acc(Email,Pass1,First)
                 id = enter.details(account)
                 return redirect("/Cook")
             else:
-                return redirect("/Register/retry")
+                return render_template("Reg.html", type=num)
 @app.route("/Login", methods=["GET","POST"])
 def LOG():
     global id
     if request.method == "GET":
-        return render_template("Login.html")
+        num= 1
+        return render_template("Login.html", type=num)
     else:
         Email = request.form.get("Em")
         Password=request.form.get("Pass")
@@ -43,7 +46,8 @@ def LOG():
         if id != False:
             return redirect("/Cook")
         else:
-            return redirect("Login/retry")
+            num=2
+            return render_template("Login.html", type=num)
 
 @app.route("/Register/retry")
 def Rretry():

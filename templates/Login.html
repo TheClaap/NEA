@@ -1,9 +1,11 @@
 <!DOCTYPE html>
+{% if type == 1: %}
 <html>
 <head>
-    <title> login </title>
-    <script type="text/javascript" src = "static/scripts/GetCookie.js"></script>
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/Login_style.css') }}">
+     <title> login </title>
+     <script type="text/javascript" src = "static/scripts/GetCookie.js"></script>
+     <script type="text/javascript" src = "static/scripts/MakeCookie.js"></script>
+     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/Login_style.css') }}">
 </head>
 <body onload="getCookieLog()">
     <form method="POST" action="/Login">
@@ -16,5 +18,34 @@
         <a href="/Register">Register</a>
     </form>
 </body>
-
 </html> 
+
+{% else: %}
+<html>
+<head>
+    <title> login </title>
+    <script type="text/javascript" src = "static/scripts/GetCookie.js"></script>
+    <script type="text/javascript" src = "static/scripts/MakeCookie.js"></script>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/Login_style.css') }}">
+    <style rel="text/stylesheet">    
+    #WRONG{
+            color: red !important;
+        }
+    </style>
+</head>
+<body onload="getCookieLog()">
+    <form method="POST" action="/Login">
+        <h2>Login</h2><br>
+        <h3>Email: </h3>
+        <input type="email" name="Em" placeholder="Email" width="17"><br>
+        <h3>Password: </h3>
+        <input type="password" name="Pass" placeholder="Password" width="17"><br>
+        <p id = WRONG>Email or password is incorrect</p>
+        <button type="submit">Login</button><br>
+        <a href="/Register">Register</a>
+    </form>
+</body>
+
+</html>
+
+{% endif %}
