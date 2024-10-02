@@ -31,6 +31,7 @@ def REG():
                 id = enter.details(account)
                 return redirect("/Cook")
             else:
+                num=2
                 return render_template("Reg.html", type=num)
 @app.route("/Login", methods=["GET","POST"])
 def LOG():
@@ -49,10 +50,6 @@ def LOG():
             num=2
             return render_template("Login.html", type=num)
 
-@app.route("/Register/retry")
-def Rretry():
-    return render_template("RegRetry.html")
-
 @app.route("/Cook")
 def cook():
     return render_template("SaveCookie.html")
@@ -61,8 +58,9 @@ def cook():
 def Lretry():
     return render_template("LogRetry.html")
 
-@app.route("/Home", methods = ["GET","POST"])
-def Home():
+@app.route("/Home/<int:id>", methods = ["GET","POST"])
+def Home(id):
+    print(id)
     if request.method == "GET":
         return render_template("Home.html")
 
