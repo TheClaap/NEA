@@ -1,4 +1,5 @@
 import sqlite3
+#This file is used for debugging and manupulating database outside of website
  
 def SelectAll():
     con = sqlite3.connect("databases/accounts.db")
