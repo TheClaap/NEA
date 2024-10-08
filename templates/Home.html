@@ -13,7 +13,7 @@
             <div id="header" class="center">
                 <div class="row">
                     <div class="logo">
-                        <img src="{{url_for('static',filename='images/logo.png')}}">
+                        <img src="{{url_for('static',filename='images/Logo.png')}}">
                     </div>
                     <div id="logout">
                         <a  href="/Register" onclick="RemCookie()">Log Out</a>
@@ -33,7 +33,7 @@
                         <div class="txtbox">
                             <p class="txtmid">you have {{hours}} left</p>
                         </div>
-                        <button class="buttmid" onclick="window.location.assign('/BuyHours')">Purchase some hours</button>
+                        <button class="buttmid" onclick="window.location.assign('/BuyHours/'+Number('{{Id}}'))">Purchase some hours</button>
                     </div>
                 </div>
                 <div id="bookedLes" class="items">

@@ -32,7 +32,7 @@ def hours(id):
     con=sqlite3.connect("databases/accounts.db")
     cur = con.cursor()
     try:
-        h = cur.execute(f"SELECT hours FROM info WHERE ID={id}").fetchall()
+        h = cur.execute(f"SELECT hours FROM info WHERE Id={id}").fetchall()
         con.close()
         return h[0][0]
     except:

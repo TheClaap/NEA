@@ -60,9 +60,9 @@ def Lretry():
 
 @app.route("/Home/<int:id>", methods = ["GET","POST"])
 def Home(id):
-    print(id)
     if request.method == "GET":
-        return render_template("Home.html")
+        Hrs = enter.hours(id)
+        return render_template("Home.html", hours=Hrs, Id=id)
 
 @app.route("/id", methods = ["GET","POST"])
 def Id():
@@ -73,10 +73,10 @@ def Id():
         I = request.form["Id"]
         return jsonify(enter.hours(I))
 
-@app.route("/BuyHours", methods = ["GET","POST"])
-def Purchase():
+@app.route("/BuyHours/<int:id>", methods = ["GET","POST"])
+def Purchase(id):
     if request.method == "GET":
-        return render_template("Purchase.html")
+        return render_template("Purchase.html", Id=id)
     else:
         id=request.form.get["id"]
         hrs=request.form.get["hrs"]
