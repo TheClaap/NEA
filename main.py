@@ -92,8 +92,8 @@ def Purchase(id):
     if request.method == "GET":
         return render_template("Purchase.html", Id=id)
     else:
-        id=request.form.get["id"]
-        hrs=request.form.get["hrs"]
+        id=request.form["id"]
+        hrs=request.form["hrs"]
         enter.Addhrs(hrs,id)
         return "True"
 #adds the hours to the account then returns true to know it was a success
