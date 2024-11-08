@@ -10,7 +10,7 @@ def details(acc):
     id = cur.execute(f"SELECT Id FROM info WHERE email='{acc.email}'").fetchall()
     con.commit()
     con.close()
-    return id
+    return id[0][0]
 
 def Hash(password):
     m = hashlib.new("sha256")
@@ -49,7 +49,7 @@ def Addhrs(hours,id):
     cur=con.cursor()
     try:
         h=cur.execute(f"SELECT hours FROM info WHERE ID={id}").fetchall()
-        temp = h[0][0] + hours
+        temp = int(h[0][0]) + int(hours)
         cur.execute(f"UPDATE info SET hours={temp} WHERE ID={id}")
 #takes the current hours in the table, adds the new hours and updates the table to reflect this change
         con.commit()

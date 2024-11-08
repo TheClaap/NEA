@@ -33,7 +33,7 @@ def REG():
             if Validate.Val(Email,Pass1) == True:
                 account = Acc(Email,Pass1,First)
                 id = enter.details(account)
-                return redirect("/Cook")
+                return render_template("Login.html",type=3, ID=id)
 #Only runs if the passwords and email meet the criteria
 #The user is re-routed to /Cook before being sent to the home page
             else:
@@ -43,7 +43,6 @@ def REG():
 
 @app.route("/Login", methods=["GET","POST"])
 def LOG():
-    global id
     if request.method == "GET":
         num= 1
         return render_template("Login.html", type=num)
@@ -55,15 +54,15 @@ def LOG():
         id = enter.val(Email,Password)
 #code to send the inputted credentials to be checked. If an id is found it is returned
         if id != False:
-            return redirect("/Cook")
+            return render_template("Login.html", type=3, ID=id)
         else:
             num=2
             return render_template("Login.html", type=num)
 #if credentials don't match the database retry screen is loaded
 
-@app.route("/Cook")
-def cook():
-    return render_template("SaveCookie.html")
+@app.route("/Cook/<int:id>")
+def cook(id):
+    return render_template("SaveCookie.html", ID = id)
 #loads a page which creates a cookie
 
 @app.route("/Home/<int:id>", methods = ["GET","POST"])

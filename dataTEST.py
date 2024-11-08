@@ -12,7 +12,7 @@ def SelectAll():
 def DeleteAll():
     con=sqlite3.connect("databases/accounts.db")
     cur=con.cursor()
-    statement = '''DELETE FROM info WHERE Id=4'''
+    statement = '''DELETE FROM info WHERE Id=8'''
     cur.execute(statement)
     con.commit()
     con.close()
@@ -33,8 +33,8 @@ def Fetch():
     con.commit()
     con.close()
 
-SelectAll()
-#DeleteAll()
+#SelectAll()
+DeleteAll()
 #Fetch()
 
 """con=sqlite3.connect('databases/accounts.db')
