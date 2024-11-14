@@ -7,11 +7,11 @@
         <div id="header" class="center">
             <div class="row">
                 <div class="logo">
-                    <img src="static/images/Logo.png">
+                    <img src="{{url_for('static', filename='images/Logo.png')}}">
                 </div>
                 <div id="logout">
                     <a  href="/Register" onclick="RemCookie()">Log Out</a><br>
-                    <a href="/Home">Home</a>
+                    <a href="/Home/{{Id}}">Home</a>
                 </div>
             </div>
         </div>

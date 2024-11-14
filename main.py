@@ -97,10 +97,10 @@ def Purchase(id):
         return "True"
 #adds the hours to the account then returns true to know it was a success
 
-@app.route("/Confirm", methods=["GET"])
-def conf():
+@app.route("/Confirm/<int:id>", methods=["GET"])
+def conf(id):
     if request.method == "GET":
-        return render_template("conf.html")
+        return render_template("conf.html", Id = id)
 
 if __name__ == "__main__":
     app.run()
