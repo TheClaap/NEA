@@ -8,25 +8,25 @@ function getCookieLog(){
             c= c.substring(1);
         }
         if (c.indexOf(name)==0){
-            return window.location.href = "/Home";
+            return window.location.href = "/Home/"+c.substring(3);
         }
     }
     return "";
 }
 
-function getCookieHome(cname){
-    let name = cname + "=";
+function getCookieHome(id){
+    let name = "Id" + "=";
     let decodedCookie= decodeURIComponent(document.cookie);
     let ca = decodedCookie.split(";");
-    for(let i=0; i<ca.length; i++){
-        let c = ca[i];
-        while(c.charAt(0)==' '){
-            c = c.substring(1);
+    if (0<ca.length){
+        let c =ca[0]
+        if (Number(c.substring(3))!=id){
+            return window.location.replace("/Home/"+Number(c.substring(3)))
         }
-        if (c.indexOf(name)==0){
-            return "";
+        else{
+            return ""
         }
+    }else{
+        return window.location.replace("/Login");
     }
-    return window.location.href = "/Login";
 }
-

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<head>
+    <title>Book Lessons</title>
+    <script src="{{url_for('static',filename='scripts/Drop.js')}}"></script>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/Booking_style.css')}}">
+    <script src ="{{url_for('static', filename='scripts/GetCookie.js') }}"></script>
+</head>
+<body onload="getCookieHome(Number('{{Id}}'))">
+<button class="dropbtn" onclick="DropLikeItsHot()">Day</button>
+<div id="Dropdown" class="dropdown-content">
+    <button class="dropdown-button">Monday</button><br>
+    <button class="dropdown-button">Tuesday</button><br>
+    <button class="dropdown-button">Wednesday</button><br>
+    <button class="dropdown-button">Thursday</button><br>
+    <button class="dropdown-button">Friday</button><br>
+    <button class="dropdown-button">Saturday</button><br>
+    <button class="dropdown-button">Sunday</button><br>
+</div>
+</body>

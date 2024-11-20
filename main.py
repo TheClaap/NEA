@@ -60,11 +60,6 @@ def LOG():
             return render_template("Login.html", type=num)
 #if credentials don't match the database retry screen is loaded
 
-@app.route("/Cook/<int:id>")
-def cook(id):
-    return render_template("SaveCookie.html", ID = id)
-#loads a page which creates a cookie
-
 @app.route("/Home/<int:id>", methods = ["GET","POST"])
 #<int: id> creates a dynamic URL which can be altered depending on who is logged in
 def Home(id):
@@ -101,6 +96,12 @@ def Purchase(id):
 def conf(id):
     if request.method == "GET":
         return render_template("conf.html", Id = id)
+#loads a page that shows a confirmation of the purchase
+
+@app.route("/Book/<int:id>", methods=["GET"])
+def book(id):
+    if request.method == "GET":
+        return render_template("Booking.html",Id=id)
 
 if __name__ == "__main__":
     app.run()

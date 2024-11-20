@@ -8,12 +8,12 @@
         <script type="text/javascript" src = "{{url_for('static', filename='scripts/MakeCookie.js')}}"></script>
         <link rel="stylesheet" type="text/css" href = "{{url_for('static', filename='css/Home_style.css') }}">
     </head>
-    <body onload="getCookieHome('Id')">
+    <body onload="getCookieHome(Number('{{Id}}'))">
         <div class="wrapping">
             <div id="header" class="center">
                 <div class="row">
                     <div class="logo">
-                        <img src="{{url_for('static',filename='images/Logo.png')}}">
+                        <img src="{{url_for('static',filename='images/Logo2.JPG')}}">
                     </div>
                     <div id="logout">
                         <a  href="/Register" onclick="RemCookie()">Log Out</a>
@@ -24,7 +24,10 @@
                 <div id="bookLes" class="items">
                     <img src="{{url_for('static', filename='images/driving.png')}}">
                     <div class="butt">
-`                       <a href="/BuyHours">purch</a>
+                        <div class="txtbox">
+                            <p class="txtmid">Here to book your next lesson</p>
+                        </div>
+`                       <button class="buttmid" onclick="window.location.assign('/Book/'+Number('{{Id}}'))">Book lessons</button>
                     </div>
                 </div>
                 <div id="buyHour" class="items">
