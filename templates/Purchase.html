@@ -7,7 +7,7 @@
         <script type="text/javascript" src = "{{url_for('static',filename='scripts/GetCookie.js')}}"></script>
         <script type="text/javascript" src= "{{url_for('static',filename='scripts/PurchHours.js')}}"></script>
     </head>
-    <body onload="getCookieHome('Id')">
+    <body onload="getCookieHome(Number('{{Id}}'))">
         <div class="wrapping">
             <div id="header" class="center">
                 <div class="row">

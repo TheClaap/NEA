@@ -117,7 +117,7 @@ def book(id):
         curr_lesson.time = int(request.form["time-select"])
         date = datetime.datetime.now()
         tz = pytz.timezone('Europe/London')
-        date = tz.localise(date)
+        date = tz.localize(date)
         print(date.strftime("%I"))
         if curr_lesson.time == "" or curr_lesson.month=="" or curr_lesson.date=="":
             return render_template("Booking.html", type=2,Id=id,month = int(date.strftime("%m")), date= int(date.strftime("%w")))
@@ -133,3 +133,4 @@ def book(id):
 
 if __name__ == "__main__":
     app.run()
+    #diddy
