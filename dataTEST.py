@@ -34,7 +34,7 @@ def Fetch():
     con.close()
 
 #SelectAll()
-DeleteAll()
+#DeleteAll()
 #Fetch()
 
 """con=sqlite3.connect('databases/accounts.db')
@@ -51,5 +51,17 @@ cur.execute(statement)
 con.commit()
 con.close()"""
 
-#table has fields email,password,name,hours
+"""con=sqlite3.connect('databases/accounts.db')
+cur = con.cursor()
+statement = '''CREATE TABLE lessons (
+    LessonId INTEGER NOT NULL PRIMARY KEY,
+    day integer,
+    month integer,
+    time text
+);'''
+statement2 = '''INSERT INTO lessons(day, month, time) VALUES(13,12,"2:00-3:00")'''
+cur.execute("ALTER TABLE lessons ADD accountId integer")
+con.commit()
+con.close()"""
+#table info has fields email,password,name,hours
 

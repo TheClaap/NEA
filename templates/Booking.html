@@ -1,19 +1,168 @@
 <!DOCTYPE html>
 <head>
     <title>Book Lessons</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
     <script src="{{url_for('static',filename='scripts/Drop.js')}}"></script>
     <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/Booking_style.css')}}">
     <script src ="{{url_for('static', filename='scripts/GetCookie.js') }}"></script>
 </head>
 <body onload="getCookieHome(Number('{{Id}}'))">
-<button class="dropbtn" onclick="DropLikeItsHot()">Day</button>
-<div id="Dropdown" class="dropdown-content">
-    <button class="dropdown-button">Monday</button><br>
-    <button class="dropdown-button">Tuesday</button><br>
-    <button class="dropdown-button">Wednesday</button><br>
-    <button class="dropdown-button">Thursday</button><br>
-    <button class="dropdown-button">Friday</button><br>
-    <button class="dropdown-button">Saturday</button><br>
-    <button class="dropdown-button">Sunday</button><br>
-</div>
+ <div class="wrapping">
+    <div id="header" class="center">
+        <div class="row">
+            <div class="logo">
+                <img src="{{url_for('static',filename='images/Logo1.png')}}">
+            </div>
+            <div id="logout">
+                <a  href="/Register" onclick="RemCookie()">Log Out</a>
+                <a href="/Home/{{Id}}">Home</a>
+            </div>
+        </div>
+    </div>
+    <div class="date-select">
+        <form id="book" method = "post" action="/Book/{{Id}}">
+        <div>
+            <div class="book-wrapper">
+                <label for="month-select">Month:</label>
+                <select form_id="book" name="month-select" id="month-select" class="month-select">
+                    {%if month == 1: %}
+                    <option value = "">--select--</option>
+                    <option value="0">January</option>
+                    <option value="1">February</option>
+                    <option value="2">March</option>
+                    <option value="3">April</option>
+                    <option value="4">May</option>
+                    <option value="5">June</option>
+                    <option value="6">July</option>
+                    <option value="7">August</option>
+                    <opiton value="8">September</opiton>
+                    <opiton value="9">October</opiton>
+                    <option value="10">November</option>
+                    <option value="11">December</option>
+                    {% elif month==2: %}
+                    <option value = "">--select--</option>
+                    <option value="1">February</option>
+                    <option value="2">March</option>
+                    <option value="3">April</option>
+                    <option value="4">May</option>
+                    <option value="5">June</option>
+                    <option value="6">July</option>
+                    <option value="7">August</option>
+                    <opiton value="8">September</opiton>
+                    <opiton value="9">October</opiton>
+                    <option value="10">November</option>
+                    <option value="11">December</option>
+                    {% elif month==3: %}
+                    <option value = "">--select--</option>
+                    <option value="2">March</option>
+                    <option value="3">April</option>
+                    <option value="4">May</option>
+                    <option value="5">June</option>
+                    <option value="6">July</option>
+                    <option value="7">August</option>
+                    <opiton value="8">September</opiton>
+                    <opiton value="9">October</opiton>
+                    <option value="10">November</option>
+                    <option value="11">December</option>
+                    {%elif month==4: %}
+                    <option value = "">--select--</option>
+                    <option value="3">April</option>
+                    <option value="4">May</option>
+                    <option value="5">June</option>
+                    <option value="6">July</option>
+                    <option value="7">August</option>
+                    <opiton value="8">September</opiton>
+                    <opiton value="9">October</opiton>
+                    <option value="10">November</option>
+                    <option value="11">December</option>
+                    {%elif month==5: %}
+                    <option value = "">--select--</option>
+                    <option value="4">May</option>
+                    <option value="5">June</option>
+                    <option value="6">July</option>
+                    <option value="7">August</option>
+                    <opiton value="8">September</opiton>
+                    <opiton value="9">October</opiton>
+                    <option value="10">November</option>
+                    <option value="11">December</option>
+                    {% elif month==6: %}
+                    <option value = "">--select--</option>
+                    <option value="5">June</option>
+                    <option value="6">July</option>
+                    <option value="7">August</option>
+                    <opiton value="8">September</opiton>
+                    <opiton value="9">October</opiton>
+                    <option value="10">November</option>
+                    <option value="11">December</option>
+                    {% elif month==7: %}
+                    <option value = "">--select--</option>
+                    <option value="6">July</option>
+                    <option value="7">August</option>
+                    <opiton value="8">September</opiton>
+                    <opiton value="9">October</opiton>
+                    <option value="10">November</option>
+                    <option value="11">December</option>
+                    {%elif month==8: %}
+                    <option value = "">--select--</option>
+                    <option value="7">August</option>
+                    <opiton value="8">September</opiton>
+                    <opiton value="9">October</opiton>
+                    <option value="10">November</option>
+                    <option value="11">December</option>
+                    {%elif month==9:%}
+                    <option value = "">--select--</option>
+                    <opiton value="8">September</opiton>
+                    <opiton value="9">October</opiton>
+                    <option value="10">November</option>
+                    <option value="11">December</option>
+                    {%elif month==10:%}
+                    <option value = "">--select--</option>
+                    <opiton value="9">October</opiton>
+                    <option value="10">November</option>
+                    <option value="11">December</option>
+                    {% elif month==11: %}
+                    <option value = "">--select--</option>
+                    <option value="10">November</option>
+                    <option value="11">December</option>
+                    {% elif month ==12: %}
+                    <option value = "">--select--</option>
+                    <option value="11">December</option>
+                    {%endif%}
+                </select>
+                <label for="date-select">Day</label>
+                <select form_id="book" name="date-select" id="date-select" class="date-select">
+                    <option value = "">--select--</option>
+                </select>
+                <label for="time-select">Time</label>
+                <select form_id="book" name="time-select" id="time-select" class="time-select">
+                    <option value = "">--select--</option>
+                    <option value = "10">10:00-11:00</option>
+                    <option value = "11">11:00-12:00</option>
+                    <option value = "12">12:00-1:00</option>
+                    <option value = "13">1:00-2:00</option>
+                    <option value = "14">2:00-3:00</option>
+                    <option value = "15">3:00-4:00</option>
+                    <option value = "16">4:00-5:00</option>
+                    <option value = "19">7:00-8:00</option>
+                    <option value = "20">8:00-9:00</option>
+                </select>
+            </div>
+            <div class="fin">
+                <button type="submit" class="boot">Book</button>
+            </div>
+        </div>
+        </form>
+    </div>
+    {%if type==2: %}
+    <div>
+        <p id="wrong">* all fields must be filled in</p>
+    </div>
+    {%elif type==3: %}
+    <div>
+        |<p id="wrong">* date in the past</p>
+    </div>
+    {%endif%}
+
+ </div>
+ 
 </body>

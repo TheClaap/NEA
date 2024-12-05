@@ -37,7 +37,7 @@ def hours(id):
     con=sqlite3.connect("databases/accounts.db")
     cur = con.cursor()
     try:
-        h = cur.execute(f"SELECT hours FROM info WHERE Id={id}").fetchall()
+        h = cur.execute(f"SELECT hours FROM info WHERE Id={int(id)}").fetchall()
 #fetches the hours for an account from the table
         con.close()
         return h[0][0]
@@ -57,6 +57,14 @@ def Addhrs(hours,id):
     except:
         return "False"
 #if a bad ID is entered the function won't go ahead with the addition
+
+def AddLesson(lesson):
+    con=sqlite3.connect("databases/accounts.db")
+    cur=con.cursor()
+    statement = f'INSERT INTO lessons(day, month, time, accountId) VALUES({lesson.date},{lesson.month},"{lesson.time}",{lesson.account})'
+    cur.execute(statement)
+    con.commit()
+    con.close()
 
 
 #details("adamcross109@gmail.com" ,"Acscscbt13","adam")

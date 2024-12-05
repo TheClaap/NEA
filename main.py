@@ -1,4 +1,4 @@
-import Validate, enter
+import Validate, enter, datetime, pytz
 from flask import Flask, render_template, request, redirect, jsonify
 app = Flask(__name__, template_folder='templates')
 
@@ -7,6 +7,14 @@ class Acc:
         self.email=email
         self.password=password
         self.name=name
+
+class Lesson:
+    def __init__(self,date,month,time,account):
+        self.date = date
+        self.month=month
+        self.time = time
+        self.account = account
+
 #class used to store the values or each account before they are added to the table
 @app.route("/")
 def index():
@@ -14,7 +22,6 @@ def index():
 
 @app.route("/Register", methods=["GET","POST"])
 def REG():
-    global id
     if request.method=="GET":
         num = 1
         return render_template("Reg.html", type=num)
@@ -50,7 +57,6 @@ def LOG():
     else:
         Email = request.form.get("Em")
         Password=request.form.get("Pass")
-        account = Acc(Email,Password,0)
         id = enter.val(Email,Password)
 #code to send the inputted credentials to be checked. If an id is found it is returned
         if id != False:
@@ -98,10 +104,32 @@ def conf(id):
         return render_template("conf.html", Id = id)
 #loads a page that shows a confirmation of the purchase
 
-@app.route("/Book/<int:id>", methods=["GET"])
+@app.route("/Book/<int:id>", methods=["GET","POST"])
 def book(id):
     if request.method == "GET":
-        return render_template("Booking.html",Id=id)
+        date = datetime.datetime.now()
+        return render_template("Booking.html",type = 1,Id=id,month = int(date.strftime("%m")), date = int(date.strftime("%w")))
+    else:
+        curr_lesson=Lesson(0,0,"",0)
+        curr_lesson.account = int(id)
+        curr_lesson.date = int(request.form["date-select"])
+        curr_lesson.month = int(request.form["month-select"])
+        curr_lesson.time = int(request.form["time-select"])
+        date = datetime.datetime.now()
+        tz = pytz.timezone('Europe/London')
+        date = tz.localise(date)
+        print(date.strftime("%I"))
+        if curr_lesson.time == "" or curr_lesson.month=="" or curr_lesson.date=="":
+            return render_template("Booking.html", type=2,Id=id,month = int(date.strftime("%m")), date= int(date.strftime("%w")))
+        else:
+            if curr_lesson.date==int(date.strftime("%w")) and int(date.strftime("%I"))>curr_lesson.time:
+                return render_template("Booking.html", type=3,Id=id,month = int(date.strftime("%m")), date= int(date.strftime("%w")))
+            else:
+                if curr_lesson.date<int(date.strftime("%w")):
+                    return render_template("Booking.html", type=3,Id=id,month = int(date.strftime("%m")), date= int(date.strftime("%w")))
+                else:              
+                    enter.AddLesson(curr_lesson)
+                    return redirect("/Home/"+str(id))
 
 if __name__ == "__main__":
     app.run()

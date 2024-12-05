@@ -18,8 +18,8 @@ function getCookieHome(id){
     let name = "Id" + "=";
     let decodedCookie= decodeURIComponent(document.cookie);
     let ca = decodedCookie.split(";");
-    if (0<ca.length){
-        let c =ca[0]
+    let c =ca[0]
+    if (0<c.length){
         if (Number(c.substring(3))!=id){
             return window.location.replace("/Home/"+Number(c.substring(3)))
         }
