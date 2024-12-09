@@ -1,4 +1,4 @@
-import Validate, enter, datetime, pytz
+import Validate, enter, datetime, zoneinfo
 from flask import Flask, render_template, request, redirect, jsonify
 app = Flask(__name__, template_folder='templates')
 
@@ -112,25 +112,26 @@ def book(id):
     else:
         curr_lesson=Lesson(0,0,"",0)
         curr_lesson.account = int(id)
-        curr_lesson.date = int(request.form["date-select"])
-        curr_lesson.month = int(request.form["month-select"])
-        curr_lesson.time = int(request.form["time-select"])
-        date = datetime.datetime.now()
-        tz = pytz.timezone('Europe/London')
-        date = tz.localize(date)
-        print(date.strftime("%I"))
-        if curr_lesson.time == "" or curr_lesson.month=="" or curr_lesson.date=="":
-            return render_template("Booking.html", type=2,Id=id,month = int(date.strftime("%m")), date= int(date.strftime("%w")))
+        curr_lesson.date = request.form["date-select"]
+        curr_lesson.month = request.form["month-select"]
+        curr_lesson.time = request.form["time-select"]
+        type = Validate.BookingCheck(curr_lesson)
+        if type != 1:
+            date = datetime.datetime.now()
+            return render_template("Booking.html", type=type,Id=id,month = int(date.strftime("%m")), date= int(date.strftime("%w")))
         else:
-            if curr_lesson.date==int(date.strftime("%w")) and int(date.strftime("%I"))>curr_lesson.time:
-                return render_template("Booking.html", type=3,Id=id,month = int(date.strftime("%m")), date= int(date.strftime("%w")))
-            else:
-                if curr_lesson.date<int(date.strftime("%w")):
-                    return render_template("Booking.html", type=3,Id=id,month = int(date.strftime("%m")), date= int(date.strftime("%w")))
-                else:              
-                    enter.AddLesson(curr_lesson)
-                    return redirect("/Home/"+str(id))
+            enter.AddLesson(curr_lesson)
+            return redirect("/Booked/Lessons/"+str(id))
 
+@app.route("/Booked/Lessons/<int:id>", methods=["GET","POST"])
+def booked_lessons(id):
+    if request.method == "GET":
+        temp_lessons=enter.GetLesson(id)
+        lessons=[]
+        for i in temp_lessons:
+            temp = Validate.clean(i[1])
+            individual_lesson = [i[0],temp,i[2]]
+            lessons.append(individual_lesson) 
+        return render_template("BookConf.html",Id=id, lessons = lessons)
 if __name__ == "__main__":
     app.run()
-    #diddy

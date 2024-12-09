@@ -34,7 +34,7 @@
                     <img src="{{url_for('static', filename='images/merc.png')}}">
                     <div class="butt">
                         <div class="txtbox">
-                            <p class="txtmid">you have {{hours}} left</p>
+                            <p class="txtmid">you have {{hours}} hours left</p>
                         </div>
                         <button class="buttmid" onclick="window.location.assign('/BuyHours/'+Number('{{Id}}'))">Purchase some hours</button>
                     </div>
@@ -42,7 +42,10 @@
                 <div id="bookedLes" class="items">
                     <img src="{{url_for('static', filename='images/surround.png')}}">
                     <div class="butt">
-                        <p>dog</p>
+                        <div class="txtbox">
+                            <p class="txtmid">see booked lessons</p>
+                        </div>
+                        <button class="buttmid" onclick="window.location.assign('/Booked/Lessons/'+Number('{{Id}}'))">See Bookings</button>
                     </div>
                 </div>
             </div>

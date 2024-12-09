@@ -61,12 +61,21 @@ def Addhrs(hours,id):
 def AddLesson(lesson):
     con=sqlite3.connect("databases/accounts.db")
     cur=con.cursor()
-    statement = f'INSERT INTO lessons(day, month, time, accountId) VALUES({lesson.date},{lesson.month},"{lesson.time}",{lesson.account})'
+    statement = f'INSERT INTO lessons(day, month, time, accountId,instructorId) VALUES({lesson.date},{lesson.month},"{lesson.time}",{lesson.account},1)'
     cur.execute(statement)
     con.commit()
     con.close()
 
+def GetLesson(id):
+    con=sqlite3.connect("databases/accounts.db")
+    cur=con.cursor()
+    statement=f'SELECT day,month,time FROM lessons WHERE accountId={id}'
+    lessons = cur.execute(statement).fetchall()
+    con.close()
+    return(lessons)
+
 
 #details("adamcross109@gmail.com" ,"Acscscbt13","adam")
 #print(val("adamcross109@gmail.com" ,"Acscscbt13"))
-print(Addhrs(10,1))
+#print(Addhrs(10,1))
+#GetLesson(1)
